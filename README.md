@@ -1,16 +1,29 @@
 # u
 
+## Description
 This is a collection of scenarios for Arma Reforger that resemble Ravage and DayZ in terms of persistence and survival. 
 
-Persistent position and loadout. Game crashes don't bother you much.
-Dynamic spawn and despawn of hostiles and allies for ambient combat and loot.
-Gamemaster to embed handcrafted scenarios within a dynamic environment.
-Players need to stay alert  all the time because this is a war zone. Gamemasters can focus on details.
-Ideal for training and exploring new terrains and equipment as it is easily customizable and  completely open source.
-
-I hope this will be helpful for anyone to do first steps in scripting automatation in Reforger, who is struggling with hours of video tutorials, when he only wants some lines of code.
+- Persistent position and loadout. Game crashes don't bother you much.
+- Dynamic spawn and despawn of hostiles and allies for ambient combat and loot.
+- Gamemaster to embed handcrafted scenarios within a dynamic environment.
+- Players need to stay alert  all the time because this is a war zone. Gamemasters can focus on details.
+- Ideal for training and exploring new terrains and equipment as it is easily customizable and  completely open source.
+ 
+ 
+ 
+## Install
+I hope this will be helpful for anyone to do first steps in scripting automatation in Reforger, who is struggling with hours of video tutorials, when only looking some lines of code.
 It's not overly elaborate and beautiful, but it's quick.
 
+Just throw the u directory in your C:\Users\Your Username\Documents\My Games\ArmaReforgerWorkbench\addons along with those two: 
+- https://github.com/Arkensor/EnfusionDatabaseFramework 
+- https://github.com/Arkensor/EnfusionPersistenceFramework 
+ 
+At this point many thanks to Arkensor for his great work!!!
+ 
+ 
+ 
+## Under the hood
 Most of the magic happens when you place the prefab gamemode "gamemaster editor" and add an OnGameStart and a user script to it, like this: 
 
 ```
@@ -113,3 +126,21 @@ class Gamemode_Class: SCR_BaseGameMode
 
 };
 ```
+ 
+ 
+You also need:
+ 
+ 
+SCR_GameModeEditor
+- disable spawn stuff
+- add EPF_BasicRespawnSystemComponent
+- add EPF_PersistenceManagerComponent: select connection info Json
+- add EPF_SpawnPoint
+ 
+ 
+Besides the gamemode:
+- Perception Manager
+- Radio Manager
+- Faction Manager
+- SCR_AIWorld_Eden
+- ScriptedChatEntity
