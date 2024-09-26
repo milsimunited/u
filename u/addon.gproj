@@ -1,0 +1,23 @@
+GameProject {
+ ID "u"
+ GUID "61E8761D4AC85A90"
+ TITLE "u - testing scenario"
+ Dependencies {
+  "58D0FB3206B6F859" "5D6EBC81EB1842EF"
+ }
+ Configurations {
+  GameProjectConfig PC {
+   WorldFile "{8FD22B90CBC1D494}Worlds/u/u_eden.ent"
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+  GameProjectConfig PS5 {
+  }
+  GameProjectConfig HEADLESS {
+  }
+ }
+}
