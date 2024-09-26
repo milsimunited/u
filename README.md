@@ -8,10 +8,12 @@ Gamemaster to embed handcrafted scenarios within a dynamic environment.
 Players need to stay alert  all the time because this is a war zone. Gamemasters can focus on details.
 Ideal for training and exploring new terrains and equipment as it is easily customizable and  completely open source.
 
-I hope this will be helpful for anyone to do first steps in scripting automatation in Reforger. 
+I hope this will be helpful for anyone to do first steps in scripting automatation in Reforger, who is struggling with hours of video tutorials, when he only wants some lines of code.
 It's not overly elaborate and beautiful, but it's quick.
 
-Most of the magic happens when you place the prefab "gammaster editor" and add a script to it, like this: 
+Most of the magic happens when you place the prefab gamemode "gamemaster editor" and add an OnGameStart and a user script to it, like this: 
+
+```
 class Gamemode_Class: SCR_BaseGameMode 
 {
     // user script
@@ -109,5 +111,5 @@ class Gamemode_Class: SCR_BaseGameMode
         GetGame().GetCallqueue().CallLater(this.u_loop, 7000, true);
     }
 
-
 };
+```
