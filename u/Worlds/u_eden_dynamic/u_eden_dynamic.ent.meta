@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{8FD22B90CBC1D494}worlds/u/u_eden.ent"
+ Name "{8FD22B90CBC1D494}worlds/u_eden_dynamic/u_eden_dynamic.ent"
  Configurations {
   ENTResourceClass PC {
   }

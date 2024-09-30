@@ -14,14 +14,15 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
    }
   }
  }
- coords 6315.882 178.634 6511.323
+ coords 7708.503 13.524 8100.682
 }
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
- coords 11242.584 212.913 17228.668
+ coords 7707.832 13.524 8099.771
 }
 SCR_GameModeEditor GameMode_Editor_Full1 : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Editor/GameMode_Editor_Full.et" {
  components {
   EPF_BasicRespawnSystemComponent "{627040E873D4B278}" {
+   m_rDefaultPrefab "{38BC774AC082A10E}Prefabs/Characters/Factions/BLUFOR/Bundeswehr/Flecktarn/Character_BW_Rifleman_Flecktarn_2.et"
   }
   EPF_PersistenceManagerComponent "{627040E80C2D69A3}" {
    m_pConnectionInfo EDF_JsonFileDbConnectionInfo "{627040E8B941C7FE}" {
@@ -51,16 +52,33 @@ SCR_GameModeEditor GameMode_Editor_Full1 : "{DA3986AF1B5032B7}Prefabs/MP/Modes/E
   SCR_RespawnTimerComponent "{56C2DDA6EE0E4071}" {
    Enabled 0
   }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   Enabled 0
+  }
+  SCR_WelcomeScreenComponent "{5D7290AC8A3E657E}" {
+   Enabled 0
+  }
  }
- coords 4478.473 0 5439.525
+ coords 7707 13.524 8098.83
  m_bAutoInitEditor 0
+ {
+  SCR_FactionManager {
+   ID "56E685E92F1B7E7A"
+   Factions {
+    SCR_Faction "{61237E82CC65E7B0}" {
+     m_bIsPlayable 1
+    }
+   }
+  }
+ }
 }
 EPF_SpawnPoint Spawnpoint {
- coords 4418.511 63.649 5684.47
+ coords 7707.711 13.288 8094.514
  angleY 105.975
+ m_fSpawnRadius 2
 }
 SCR_MapLocator {
- coords 6315.882 178.634 6511.323
+ coords 7709.006 13.524 8101.632
  m_WorldDirections SCR_MapLocationQuadHint "{5AAA92CD91D1D8F5}" : "{ABA21F381437DFE8}Configs/Map/MapLocatorHints/LocationHintsEveron.conf" {
  }
 }

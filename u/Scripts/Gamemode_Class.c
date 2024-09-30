@@ -1,4 +1,4 @@
-class Gamemode_Class: SCR_BaseGameMode 
+class GameMode_Editor_Full_Class: SCR_GameModeEditor 
 {
 	// user script
 	protected ref array<IEntity> spawned = {}; // NOT const!!!
@@ -11,8 +11,8 @@ class Gamemode_Class: SCR_BaseGameMode
 		array<int> allPlayers = {};
 		playerManager.GetPlayers(allPlayers);
 		
-		Resource resource_blufor = Resource.Load("{84E5BBAB25EA23E5}Prefabs/Groups/BLUFOR/Group_US_FireTeam.et");
-		Resource resource_opfor = Resource.Load("{30ED11AA4F0D41E5}Prefabs/Groups/OPFOR/Group_USSR_FireGroup.et");
+		Resource resource_blufor = Resource.Load("{938AAB9744DC2546}Prefabs/Groups/BLUFOR/Group_BW_Squad_Flecktarn.et");
+		Resource resource_opfor = Resource.Load("{0ACD74AD27EEEE7D}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_FireGroup.et");
 		EntitySpawnParams params = new EntitySpawnParams();
 		params.TransformMode = ETransformMode.WORLD;
 		
@@ -62,12 +62,12 @@ class Gamemode_Class: SCR_BaseGameMode
 		foreach (int oneplayerid : allPlayers)
 		{
 			IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);
-			vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(200, 500, player.GetOrigin(), true);
+			vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(250, 500, player.GetOrigin(), true);
 			bool too_close = false;
 			foreach (int oneplayerid2 : allPlayers)
 			{
 				IEntity player2 = playerManager.GetPlayerControlledEntity(oneplayerid2);
-				if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 300 )
+				if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 250 )
 				{
 					too_close = true;
 				}
@@ -83,7 +83,7 @@ class Gamemode_Class: SCR_BaseGameMode
 			
 			int distance = vector.Distance(player.GetOrigin(), spawn_pos);
 			Print("Player: " + oneplayerid + " " + playerManager.GetPlayerName(oneplayerid) + " Position: " + player.GetOrigin(), LogLevel.NORMAL);
-			Print("Player vector transformation: " + SCR_Math2D.GenerateRandomPointInRadius(200, 500, player.GetOrigin(), true), LogLevel.NORMAL);
+			Print("Player vector transformation: " + SCR_Math2D.GenerateRandomPointInRadius(250, 500, player.GetOrigin(), true), LogLevel.NORMAL);
 			Print("Distance to player: " + distance + "; too close: " + too_close, LogLevel.NORMAL);
 		}
     }
@@ -95,3 +95,4 @@ class Gamemode_Class: SCR_BaseGameMode
 	}
 
 };
+
