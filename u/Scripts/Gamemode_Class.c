@@ -1,7 +1,7 @@
 class GameMode_Editor_Full_Class: SCR_GameModeEditor 
 {
 	// user script
-	protected ref array<IEntity> spawned = {}; // NOT const!!!
+	protected ref array<IEntity> spawned = {}; // NOT const!!! // about arrays: scripts/Core/proto/Types.c 
 	protected ref array<int> to_delete = {};
 	
 	
@@ -59,32 +59,36 @@ class GameMode_Editor_Full_Class: SCR_GameModeEditor
 		
 		to_delete.Clear();
 		
-		foreach (int oneplayerid : allPlayers)
+		Print("spawned: " + spawned.Count(), LogLevel.NORMAL);
+		if(spawned.Count() < 16)
 		{
-			IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);
-			vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(250, 500, player.GetOrigin(), true);
-			bool too_close = false;
-			foreach (int oneplayerid2 : allPlayers)
+			foreach (int oneplayerid : allPlayers)
 			{
-				IEntity player2 = playerManager.GetPlayerControlledEntity(oneplayerid2);
-				if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 250 )
+				IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);
+				vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(250, 500, player.GetOrigin(), true);
+				bool too_close = false;
+				foreach (int oneplayerid2 : allPlayers)
 				{
-					too_close = true;
+					IEntity player2 = playerManager.GetPlayerControlledEntity(oneplayerid2);
+					if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 250 )
+					{
+						too_close = true;
+					}
 				}
+				if ( !too_close )
+				{
+					params.Transform = {"1 0 0","0 1 0","0 0 1",spawn_pos};
+					IEntity friendly = GetGame().SpawnEntityPrefab(resource_blufor, GetGame().GetWorld(), params);
+					spawned.Insert(friendly);
+					IEntity hostile = GetGame().SpawnEntityPrefab(resource_opfor, GetGame().GetWorld(), params);
+					spawned.Insert(hostile);
+				}
+				
+				int distance = vector.Distance(player.GetOrigin(), spawn_pos);
+				Print("Player: " + oneplayerid + " " + playerManager.GetPlayerName(oneplayerid) + " Position: " + player.GetOrigin(), LogLevel.NORMAL);
+				Print("Player vector transformation: " + SCR_Math2D.GenerateRandomPointInRadius(250, 500, player.GetOrigin(), true), LogLevel.NORMAL);
+				Print("Distance to player: " + distance + "; too close: " + too_close, LogLevel.NORMAL);
 			}
-			if ( !too_close )
-			{
-				params.Transform = {"1 0 0","0 1 0","0 0 1",spawn_pos};
-				IEntity friendly = GetGame().SpawnEntityPrefab(resource_blufor, GetGame().GetWorld(), params);
-				spawned.Insert(friendly);
-				IEntity hostile = GetGame().SpawnEntityPrefab(resource_opfor, GetGame().GetWorld(), params);
-				spawned.Insert(hostile);
-			}
-			
-			int distance = vector.Distance(player.GetOrigin(), spawn_pos);
-			Print("Player: " + oneplayerid + " " + playerManager.GetPlayerName(oneplayerid) + " Position: " + player.GetOrigin(), LogLevel.NORMAL);
-			Print("Player vector transformation: " + SCR_Math2D.GenerateRandomPointInRadius(250, 500, player.GetOrigin(), true), LogLevel.NORMAL);
-			Print("Distance to player: " + distance + "; too close: " + too_close, LogLevel.NORMAL);
 		}
     }
 
@@ -95,4 +99,24 @@ class GameMode_Editor_Full_Class: SCR_GameModeEditor
 	}
 
 };
+
+
+/*
+You also need:
+
+SCR_GameModeEditor
+
+    disable spawn stuff
+    add EPF_BasicRespawnSystemComponent
+    add EPF_PersistenceManagerComponent: select connection info Json
+    add EPF_SpawnPoint
+
+Besides the gamemode:
+
+    Perception Manager
+    Radio Manager
+    Faction Manager
+    SCR_AIWorld_Eden
+    ScriptedChatEntity
+*/
 
