@@ -7,8 +7,8 @@ Arma Reforger scenario with player and vehicle persistence and dynamic spawn.
 - Dynamic spawn and despawn of hostiles and allies for ambient combat and loot.
 - Gamemaster to embed handcrafted scenarios within a dynamic environment.
 - Players need to stay alert  all the time because this is a war zone. Gamemasters have more time to focus on details.
-- Ideal for training and exploring new terrains and equipment and as a template as it is easily customizable and completely open source.
- 
+- Ideal for training and exploring new terrains and equipment.
+- Ideal scenario template as it is easily customizable and completely open source.
  
  
  
