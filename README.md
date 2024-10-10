@@ -1,13 +1,13 @@
 # u
 
 ## Description
-This is a collection of scenarios for Arma Reforger that resemble Ravage and DayZ in terms of persistence and survival. 
+Arma Reforger scenario with player and vehicle persistence and dynamic spawn. 
 
 - Persistent position and loadout. Game crashes don't bother you much.
 - Dynamic spawn and despawn of hostiles and allies for ambient combat and loot.
 - Gamemaster to embed handcrafted scenarios within a dynamic environment.
-- Players need to stay alert  all the time because this is a war zone. Gamemasters can focus on details.
-- Ideal for training and exploring new terrains and equipment as it is easily customizable and  completely open source.
+- Players need to stay alert  all the time because this is a war zone. Gamemasters have more time to focus on details.
+- Ideal for training and exploring new terrains and equipment and as a template as it is easily customizable and completely open source.
  
  
  
@@ -22,11 +22,7 @@ https://reforger.armaplatform.com/workshop/61E8761D4AC85A90-u-Everon
 I hope this will be helpful for anyone to do first steps in scripting automatation in Reforger, who is struggling with hours of video tutorials, when only looking for some lines of code.
 It's not overly elaborate and beautiful, but it's quick.
 
-Just throw the u directory in your C:\Users\Your Username\Documents\My Games\ArmaReforgerWorkbench\addons along with those: 
-- https://github.com/Arkensor/EnfusionDatabaseFramework 
-- https://github.com/Arkensor/EnfusionPersistenceFramework 
-  At this point many thanks to Arkensor for his great work!!! 
-- all other dependencies from the workshop
+Just throw the u directory in your C:\Users\Your Username\Documents\My Games\ArmaReforgerWorkbench\addons along with all the dependencies from the workshop.
  
  
  
