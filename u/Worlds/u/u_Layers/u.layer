@@ -60,8 +60,7 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
   }
  }
  coords 7707 13.524 8098.83
- userScript "	protected ref array<IEntity> spawned = {}; // NOT const!!! // about arrays: scripts/Core/proto/Types.c"\
- "	protected ref array<IEntity> spawned_blufor = {}; // NOT const!!! // about arrays: scripts/Core/proto/Types.c"\
+ userScript "	protected ref array<IEntity> spawned_blufor = {}; // NOT const!!! // about arrays: scripts/Core/proto/Types.c"\
  "	protected ref array<IEntity> spawned_opfor = {};"\
  "	protected ref array<int> to_delete = {};"\
  "	"\

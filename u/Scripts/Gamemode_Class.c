@@ -1,7 +1,8 @@
 class GameMode_Editor_Full_Class: SCR_GameModeEditor 
 {
 	// user script
-	protected ref array<IEntity> spawned = {}; // NOT const!!! // about arrays: scripts/Core/proto/Types.c 
+	protected ref array<IEntity> spawned_blufor = {}; // NOT const!!! // about arrays: scripts/Core/proto/Types.c
+	protected ref array<IEntity> spawned_opfor = {};
 	protected ref array<int> to_delete = {};
 	
 	
@@ -17,24 +18,20 @@ class GameMode_Editor_Full_Class: SCR_GameModeEditor
 		params.TransformMode = ETransformMode.WORLD;
 		
 		Print("u loop ext execute", LogLevel.NORMAL);
-		Print("spawned: " + spawned, LogLevel.NORMAL);
-		Print("to_delete: " + to_delete, LogLevel.NORMAL);
 		
-		//foreach (int index, int hostile : spawned)
-		for (int i = 0; i < spawned.Count(); i++)
+		// BLUFOR
+		// foreach (int index, int hostile : spawned)
+		for (int i = 0; i < spawned_blufor.Count(); i++)
 		{
-			Print("index = " + i + "; value = " + spawned[i], LogLevel.NORMAL);
-			
 			bool too_far = true;
 			foreach (int oneplayerid : allPlayers)
 			{
 				IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);
-				if ( spawned[i] != NULL )
+				if ( spawned_blufor[i] != NULL )
 				{
-					if ( vector.Distance(spawned[i].GetOrigin(), player.GetOrigin()) < 600 )
+					if ( vector.Distance(spawned_blufor[i].GetOrigin(), player.GetOrigin()) < 400 )
 					{
 						too_far = false;
-						Print("Distance to player: " + vector.Distance(spawned[i].GetOrigin(), player.GetOrigin()) + "; too far: " + too_far, LogLevel.NORMAL);
 					}
 				}
 			}
@@ -46,77 +43,93 @@ class GameMode_Editor_Full_Class: SCR_GameModeEditor
 		
 		for (int i = 0; i < to_delete.Count(); i++)
 		{
-			Print("to delete: " + to_delete[i], LogLevel.NORMAL);
-			if ( spawned.IsIndexValid(to_delete[i]) )
+			if ( spawned_blufor.IsIndexValid(to_delete[i]) )
 			{
-				if ( spawned[to_delete[i]] != NULL )
+				if ( spawned_blufor[to_delete[i]] != NULL )
 				{
-					SCR_EntityHelper.DeleteEntityAndChildren( spawned[to_delete[i]] );
+					SCR_EntityHelper.DeleteEntityAndChildren( spawned_blufor[to_delete[i]] );
 				}
-				spawned.Remove(to_delete[i]);
+				spawned_blufor.Remove(to_delete[i]);
 			}
 		}
 		
 		to_delete.Clear();
 		
-		Print("spawned: " + spawned.Count(), LogLevel.NORMAL);
-		if(spawned.Count() < 16)
+		// OPFOR
+		for (int i = 0; i < spawned_opfor.Count(); i++)
 		{
+			bool too_far = true;
 			foreach (int oneplayerid : allPlayers)
 			{
 				IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);
-				vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(250, 500, player.GetOrigin(), true);
-				bool too_close = false;
-				foreach (int oneplayerid2 : allPlayers)
+				if ( spawned_opfor[i] != NULL )
 				{
-					IEntity player2 = playerManager.GetPlayerControlledEntity(oneplayerid2);
-					if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 250 )
+					if ( vector.Distance(spawned_opfor[i].GetOrigin(), player.GetOrigin()) < 400 )
 					{
-						too_close = true;
+						too_far = false;
 					}
 				}
-				if ( !too_close )
-				{
-					params.Transform = {"1 0 0","0 1 0","0 0 1",spawn_pos};
-					IEntity friendly = GetGame().SpawnEntityPrefab(resource_blufor, GetGame().GetWorld(), params);
-					spawned.Insert(friendly);
-					IEntity hostile = GetGame().SpawnEntityPrefab(resource_opfor, GetGame().GetWorld(), params);
-					spawned.Insert(hostile);
-				}
-				
-				int distance = vector.Distance(player.GetOrigin(), spawn_pos);
-				Print("Player: " + oneplayerid + " " + playerManager.GetPlayerName(oneplayerid) + " Position: " + player.GetOrigin(), LogLevel.NORMAL);
-				Print("Player vector transformation: " + SCR_Math2D.GenerateRandomPointInRadius(250, 500, player.GetOrigin(), true), LogLevel.NORMAL);
-				Print("Distance to player: " + distance + "; too close: " + too_close, LogLevel.NORMAL);
+			}
+			if ( too_far )
+			{
+				to_delete.Insert(i);
 			}
 		}
+		
+		for (int i = 0; i < to_delete.Count(); i++)
+		{
+			if ( spawned_opfor.IsIndexValid(to_delete[i]) )
+			{
+				if ( spawned_opfor[to_delete[i]] != NULL )
+				{
+					SCR_EntityHelper.DeleteEntityAndChildren( spawned_opfor[to_delete[i]] );
+				}
+				spawned_opfor.Remove(to_delete[i]);
+			}
+		}
+		
+		to_delete.Clear();
+			
+		foreach (int oneplayerid : allPlayers)
+		{
+			IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);
+			vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(200, 400, player.GetOrigin(), true);
+			bool too_close = false;
+			foreach (int oneplayerid2 : allPlayers)
+			{
+				IEntity player2 = playerManager.GetPlayerControlledEntity(oneplayerid2);
+				if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 200 )
+				{
+					too_close = true;
+				}
+			}
+			if ( !too_close )
+			{
+				params.Transform = {"1 0 0","0 1 0","0 0 1",spawn_pos};
+				
+				if(spawned_blufor.Count() < 8)
+				{
+					IEntity blufor = GetGame().SpawnEntityPrefab(resource_blufor, GetGame().GetWorld(), params);
+					spawned_blufor.Insert(blufor);
+				}
+				
+				if(spawned_opfor.Count() < 12)
+				{
+					IEntity opfor = GetGame().SpawnEntityPrefab(resource_opfor, GetGame().GetWorld(), params);
+					spawned_opfor.Insert(opfor);
+				}
+			}
+			
+			int distance = vector.Distance(player.GetOrigin(), spawn_pos);
+		}
+			
     }
 
 	override void OnGameStart()
 	{
 		Print("u loop ext initialized", LogLevel.NORMAL);
-		GetGame().GetCallqueue().CallLater(this.u_loop, 7000, true);
+		GetGame().GetCallqueue().CallLater(this.u_loop, 120000, true);
 	}
 
 };
-
-
-/*
-You also need:
-
-SCR_GameModeEditor
-
-    disable spawn stuff
-    add EPF_BasicRespawnSystemComponent
-    add EPF_PersistenceManagerComponent: select connection info Json
-    add EPF_SpawnPoint
-
-Besides the gamemode:
-
-    Perception Manager
-    Radio Manager
-    Faction Manager
-    SCR_AIWorld_Eden
-    ScriptedChatEntity
-*/
 
