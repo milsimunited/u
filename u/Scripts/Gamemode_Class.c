@@ -13,7 +13,8 @@ class GameMode_Editor_Full_Class: SCR_GameModeEditor
 		playerManager.GetPlayers(allPlayers);
 		
 		Resource resource_blufor = Resource.Load("{938AAB9744DC2546}Prefabs/Groups/BLUFOR/Group_BW_Squad_Flecktarn.et");
-		Resource resource_opfor = Resource.Load("{0ACD74AD27EEEE7D}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_FireGroup.et");
+		//Resource resource_opfor_01 = Resource.Load("{0ACD74AD27EEEE7D}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_FireGroup.et");
+		Resource resource_opfor = Resource.Load("{F6CEAA1D2B0A7ED0}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_RifleSquad.et");
 		EntitySpawnParams params = new EntitySpawnParams();
 		params.TransformMode = ETransformMode.WORLD;
 		
@@ -93,12 +94,12 @@ class GameMode_Editor_Full_Class: SCR_GameModeEditor
 		foreach (int oneplayerid : allPlayers)
 		{
 			IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);
-			vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(200, 400, player.GetOrigin(), true);
+			vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(175, 350, player.GetOrigin(), true);
 			bool too_close = false;
 			foreach (int oneplayerid2 : allPlayers)
 			{
 				IEntity player2 = playerManager.GetPlayerControlledEntity(oneplayerid2);
-				if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 200 )
+				if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 150 )
 				{
 					too_close = true;
 				}
@@ -107,16 +108,24 @@ class GameMode_Editor_Full_Class: SCR_GameModeEditor
 			{
 				params.Transform = {"1 0 0","0 1 0","0 0 1",spawn_pos};
 				
-				if(spawned_blufor.Count() < 8)
+				if(spawned_blufor.Count() < 12)
 				{
 					IEntity blufor = GetGame().SpawnEntityPrefab(resource_blufor, GetGame().GetWorld(), params);
 					spawned_blufor.Insert(blufor);
 				}
 				
-				if(spawned_opfor.Count() < 12)
+				if(spawned_opfor.Count() < 20)
 				{
 					IEntity opfor = GetGame().SpawnEntityPrefab(resource_opfor, GetGame().GetWorld(), params);
 					spawned_opfor.Insert(opfor);
+					
+					int random = Math.RandomInt(0, 2);
+					if(random == 1)
+					{
+						IEntity opfor2 = GetGame().SpawnEntityPrefab(resource_opfor, GetGame().GetWorld(), params);
+						spawned_opfor.Insert(opfor2);
+					}
+					//Print("random: " + random, LogLevel.NORMAL);
 				}
 			}
 			
@@ -128,7 +137,7 @@ class GameMode_Editor_Full_Class: SCR_GameModeEditor
 	override void OnGameStart()
 	{
 		Print("u loop ext initialized", LogLevel.NORMAL);
-		GetGame().GetCallqueue().CallLater(this.u_loop, 120000, true);
+		GetGame().GetCallqueue().CallLater(this.u_loop, 100000, true);
 	}
 
 };

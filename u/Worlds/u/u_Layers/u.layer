@@ -72,7 +72,8 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "		playerManager.GetPlayers(allPlayers);"\
  "		"\
  "		Resource resource_blufor = Resource.Load(\"{938AAB9744DC2546}Prefabs/Groups/BLUFOR/Group_BW_Squad_Flecktarn.et\");"\
- "		Resource resource_opfor = Resource.Load(\"{0ACD74AD27EEEE7D}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_FireGroup.et\");"\
+ "		//Resource resource_opfor_01 = Resource.Load(\"{0ACD74AD27EEEE7D}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_FireGroup.et\");"\
+ "		Resource resource_opfor = Resource.Load(\"{F6CEAA1D2B0A7ED0}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_RifleSquad.et\");"\
  "		EntitySpawnParams params = new EntitySpawnParams();"\
  "		params.TransformMode = ETransformMode.WORLD;"\
  "		"\
@@ -152,12 +153,12 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "		foreach (int oneplayerid : allPlayers)"\
  "		{"\
  "			IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);"\
- "			vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(200, 400, player.GetOrigin(), true);"\
+ "			vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(175, 350, player.GetOrigin(), true);"\
  "			bool too_close = false;"\
  "			foreach (int oneplayerid2 : allPlayers)"\
  "			{"\
  "				IEntity player2 = playerManager.GetPlayerControlledEntity(oneplayerid2);"\
- "				if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 200 )"\
+ "				if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 150 )"\
  "				{"\
  "					too_close = true;"\
  "				}"\
@@ -166,16 +167,24 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "			{"\
  "				params.Transform = {\"1 0 0\",\"0 1 0\",\"0 0 1\",spawn_pos};"\
  "				"\
- "				if(spawned_blufor.Count() < 8)"\
+ "				if(spawned_blufor.Count() < 12)"\
  "				{"\
  "					IEntity blufor = GetGame().SpawnEntityPrefab(resource_blufor, GetGame().GetWorld(), params);"\
  "					spawned_blufor.Insert(blufor);"\
  "				}"\
  "				"\
- "				if(spawned_opfor.Count() < 12)"\
+ "				if(spawned_opfor.Count() < 20)"\
  "				{"\
  "					IEntity opfor = GetGame().SpawnEntityPrefab(resource_opfor, GetGame().GetWorld(), params);"\
  "					spawned_opfor.Insert(opfor);"\
+ "					"\
+ "					int random = Math.RandomInt(0, 2);"\
+ "					if(random == 1)"\
+ "					{"\
+ "						IEntity opfor2 = GetGame().SpawnEntityPrefab(resource_opfor, GetGame().GetWorld(), params);"\
+ "						spawned_opfor.Insert(opfor2);"\
+ "					}"\
+ "					//Print(\"random: \" + random, LogLevel.NORMAL);"\
  "				}"\
  "			}"\
  "			"\
@@ -185,7 +194,7 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "    }"
  OnGameStart ""\
  "		Print(\"u loop ext initialized\", LogLevel.NORMAL);"\
- "		GetGame().GetCallqueue().CallLater(this.u_loop, 120000, true);"\
+ "		GetGame().GetCallqueue().CallLater(this.u_loop, 100000, true);"\
  "	"
  m_bAutoInitEditor 0
  {
@@ -201,7 +210,7 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
 }
 $grp EPF_SpawnPoint {
  Spawnpoint {
-  coords 4541.99 68.199 4690.647
+  coords 8695.542 214.238 4042.763
   angleY 105.975
   m_fSpawnRadius 1500
  }
@@ -221,7 +230,7 @@ $grp EPF_SpawnPoint {
   m_fSpawnRadius 1500
  }
  Spawnpoint4 {
-  coords 3643.673 132.87 6113.842
+  coords 7409.279 127.015 5082.294
   angleY 105.975
   m_fSpawnRadius 1500
  }
