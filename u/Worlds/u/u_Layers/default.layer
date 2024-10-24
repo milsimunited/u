@@ -120,9 +120,6 @@ GenericEntity TestItems : "{622F9989DDC4865B}PrefabLibrary/Props/Civilian/Recrea
   }
  }
 }
-SCR_AIGroup : "{F6CEAA1D2B0A7ED0}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_RifleSquad.et" {
- coords 8972.281 0 3622.961
-}
 $grp Vehicle : "{FA6820A9A52CD05B}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MDO_USAF.et" {
  M1025_armed_M2HB_MDO_USAF1 {
   coords 7663.652 12.888 8070.891
