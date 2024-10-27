@@ -91,12 +91,12 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "				IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);"\
  "				if ( spawned_blufor[i] != NULL )"\
  "				{"\
- "					if ( vector.Distance(spawned_blufor[i].GetOrigin(), player.GetOrigin()) < 400 )"\
+ "					if ( vector.Distance(spawned_blufor[i].GetOrigin(), player.GetOrigin()) < 350 )"\
  "					{"\
  "						too_far = false;"\
  "					}"\
  "				}"\
- "			}"\
+ "			}	"\
  "			if ( too_far )"\
  "			{"\
  "				to_delete.Insert(i);"\
@@ -120,13 +120,13 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "		// OPFOR"\
  "		for (int i = 0; i < spawned_opfor.Count(); i++)"\
  "		{"\
- "			bool too_far = true;"\
+ "			bool too_far = true;				"\
  "			foreach (int oneplayerid : allPlayers)"\
  "			{"\
  "				IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);"\
  "				if ( spawned_opfor[i] != NULL )"\
  "				{"\
- "					if ( vector.Distance(spawned_opfor[i].GetOrigin(), player.GetOrigin()) < 400 )"\
+ "					if ( vector.Distance(spawned_opfor[i].GetOrigin(), player.GetOrigin()) < 350 )"\
  "					{"\
  "						too_far = false;"\
  "					}"\
@@ -202,7 +202,7 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "    }"
  OnGameStart ""\
  "		Print(\"u loop ext initialized\", LogLevel.NORMAL);"\
- "		GetGame().GetCallqueue().CallLater(this.u_loop, 100000, true);"\
+ "		GetGame().GetCallqueue().CallLater(this.u_loop, 10000, true);"\
  "	"
  m_bAutoInitEditor 0
  m_GameMasterTarget NOBODY
