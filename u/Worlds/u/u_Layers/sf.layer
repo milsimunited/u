@@ -1,0 +1,855 @@
+$grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ Area1 {
+  components {
+   SCR_MapDescriptorComponent "{62B881784B61E2D8}" {
+    DisplayName "Material sicherstellen"
+    ShowTerrainElevation 1
+    MapItemDescriptor 1
+    MainType Task
+    UnitType Infantry
+    Scale 10
+    Faction 1
+    ForceGroupType Separate
+    ForceGroupScale 10
+    Priority 10
+   }
+   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+    m_iRandomPercent 100
+    m_bShowDebugShapesDuringRuntime 1
+    m_fAreaRadius 199
+    m_bOnce 0
+    m_bDynamicDespawn 1
+    m_iDynamicDespawnRange 200
+    m_bShowDebugShapesInWorkbench 1
+   }
+  }
+  coords 5138.192 176.861 7048.371
+  {
+   SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
+    coords -2.154 -0.45 -0.505
+    m_sName "Supplies"
+    m_sDescription ""
+   }
+   GenericEntity LayerTaskClearArea_1 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
+    components {
+     SCR_ScenarioFrameworkLayerTaskClearArea "{5A6513F46D132331}" {
+      m_sFactionKey "BW"
+      m_sTaskTitle "Material sichern"
+      m_sTaskDescription "Material sichern"
+      m_bPlaceMarkerOnSubjectSlot 1
+      m_sOverrideObjectDisplayName "Material sichern"
+     }
+    }
+    coords -2.154 -0.45 -3.246
+    {
+     $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+      Layer1 {
+       components {
+        SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+         m_iRandomPercent 100
+        }
+       }
+       coords -1.727 -0.049 -6.085
+       {
+        GenericEntity SlotClearArea1 : "{E53456990A756229}Prefabs/ScenarioFramework/Components/SlotClearArea.et" {
+         components {
+          SCR_ScenarioFrameworkSlotClearArea "{5A633AF525D5B972}" {
+           m_aPlugins {
+            SCR_ScenarioFrameworkPluginTrigger "{5A633AF5368D26A3}" {
+             m_fAreaRadius 75
+             m_aSpecificClassNames {
+              "SCR_ChimeraCharacter"
+             }
+             m_sActivatedByThisFaction "US"
+            }
+           }
+          }
+         }
+         coords 2.088 0.053 5.775
+        }
+       }
+      }
+      Layer_AI {
+       coords 0.218 0.002 -0.11
+       {
+        $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+         group_01 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+           }
+          }
+          coords -30.927 0.376 18.832
+         }
+         group_02 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+           }
+          }
+          coords 32.185 -2.933 -29.878
+         }
+         group_03 {
+          components {
+           AISmartActionComponent "{62B8817ECBBC5CC6}" {
+            AIBehaviorTree "{6A15DD6945D1FCC0}AI/BehaviorTrees/Chimera/Group/GetInNearestVehicle.bt"
+           }
+           AISmartActionUserComponent "{62B8817D3270F9D2}" {
+           }
+           SCR_AISmartActionComponent "{62B8817CE235FA9D}" {
+            AIBehaviorTree "{6A15DD6945D1FCC0}AI/BehaviorTrees/Chimera/Group/GetInNearestVehicle.bt"
+           }
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+            m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{62B8817D07D8BDB6}" {
+            }
+           }
+          }
+          coords 26.133 -1.538 44
+         }
+         UAZ {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{03D9932135924AEF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo_uncovered.et"
+           }
+          }
+          coords -0.815 -0.352 9.754
+         }
+         HMMWV {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{B4FB836E882E1A05}Prefabs/Vehicles/Wheeled/M998/M998_USAF.et"
+           }
+          }
+          coords -1.118 -0.639 -6.104
+          angleY 175.963
+         }
+         arsenal_ru {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{FB95D1B918E908A9}Prefabs/Systems/Arsenal/ArsenalBoxes/USSR/ArsenalBox_RHS.et"
+           }
+          }
+          coords 5.035 -0.824 11.511
+          angleY 175.963
+         }
+         arsenal_ion {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{691477161637ECDB}Prefabs/Systems/Arsenal/ArsenalBoxes/ION/ArsenalBox_RHS_ION.et"
+           }
+          }
+          coords 5.444 -0.824 5.713
+          angleY 175.963
+         }
+         arsenal_bw {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{6988423066D7593B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_BW.et"
+           }
+          }
+          coords 6.331 -0.824 -6.86
+          angleY 175.963
+         }
+         arsenal_usmc {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{3970981B94D3F882}Prefabs/Systems/Arsenal/ArsenalBoxes/US/ArsenalBox_USMC.et"
+           }
+          }
+          coords 5.947 -0.824 -1.413
+          angleY 175.963
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ Area2 {
+  components {
+   SCR_MapDescriptorComponent "{62B881784B61E2D8}" {
+    DisplayName "Material sicherstellen"
+    ShowTerrainElevation 1
+    MapItemDescriptor 1
+    MainType Task
+    UnitType Infantry
+    Scale 10
+    Faction 1
+    ForceGroupType Separate
+    ForceGroupScale 10
+    Priority 10
+   }
+   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+    m_iRandomPercent 100
+    m_bShowDebugShapesDuringRuntime 1
+    m_fAreaRadius 199
+    m_bOnce 0
+    m_bDynamicDespawn 1
+    m_iDynamicDespawnRange 200
+    m_bShowDebugShapesInWorkbench 1
+   }
+  }
+  coords 4550.154 17.313 10535.453
+  {
+   SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
+    coords 0.349 -0.45 -2.523
+    m_sName "Supplies"
+    m_sDescription ""
+   }
+   GenericEntity LayerTaskClearArea1 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
+    components {
+     SCR_ScenarioFrameworkLayerTaskClearArea "{5A6513F46D132331}" {
+      m_sFactionKey "BW"
+      m_sTaskTitle "Material sichern"
+      m_sTaskDescription "Material sichern"
+      m_bPlaceMarkerOnSubjectSlot 1
+      m_sOverrideObjectDisplayName "Material sichern"
+     }
+    }
+    coords -2.288 -0.45 -2.523
+    {
+     $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+      Layer2 {
+       components {
+        SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+         m_iRandomPercent 100
+        }
+       }
+       coords -1.727 -0.049 -6.085
+       {
+        GenericEntity SlotClearArea2 : "{E53456990A756229}Prefabs/ScenarioFramework/Components/SlotClearArea.et" {
+         components {
+          SCR_ScenarioFrameworkSlotClearArea "{5A633AF525D5B972}" {
+           m_aPlugins {
+            SCR_ScenarioFrameworkPluginTrigger "{5A633AF5368D26A3}" {
+             m_fAreaRadius 75
+             m_aSpecificClassNames {
+              "SCR_ChimeraCharacter"
+             }
+             m_sActivatedByThisFaction "US"
+            }
+           }
+          }
+         }
+         coords 2.088 0.053 5.775
+        }
+       }
+      }
+      Layer_AI2 {
+       coords 6.884 0.002 6.654
+       angleY -30.194
+       {
+        $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+         group_1 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+           }
+          }
+          coords -43.117 -0.952 0.937
+         }
+         group_2 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+           }
+          }
+          coords 6.45 -0.414 -58.746
+         }
+         group_3 {
+          components {
+           AISmartActionComponent "{62B8817ECBBC5CC6}" {
+            AIBehaviorTree "{6A15DD6945D1FCC0}AI/BehaviorTrees/Chimera/Group/GetInNearestVehicle.bt"
+           }
+           AISmartActionUserComponent "{62B8817D3270F9D2}" {
+           }
+           SCR_AISmartActionComponent "{62B8817CE235FA9D}" {
+            AIBehaviorTree "{6A15DD6945D1FCC0}AI/BehaviorTrees/Chimera/Group/GetInNearestVehicle.bt"
+           }
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+            m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{62B8817D07D8BDB6}" {
+            }
+           }
+          }
+          coords 49.625 -2.732 28.805
+         }
+         UAZ2 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{03D9932135924AEF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo_uncovered.et"
+           }
+          }
+          coords -0.815 -0.352 9.754
+         }
+         HMMWV2 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{B4FB836E882E1A05}Prefabs/Vehicles/Wheeled/M998/M998_USAF.et"
+           }
+          }
+          coords -1.118 -0.639 -6.104
+          angleY 175.963
+         }
+         arsenal_ru2 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{FB95D1B918E908A9}Prefabs/Systems/Arsenal/ArsenalBoxes/USSR/ArsenalBox_RHS.et"
+           }
+          }
+          coords 5.035 -0.824 11.511
+          angleY 175.963
+         }
+         arsenal_ion2 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{691477161637ECDB}Prefabs/Systems/Arsenal/ArsenalBoxes/ION/ArsenalBox_RHS_ION.et"
+           }
+          }
+          coords 5.444 -0.824 5.713
+          angleY 175.963
+         }
+         arsenal_bw2 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{6988423066D7593B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_BW.et"
+           }
+          }
+          coords 6.331 -0.824 -6.86
+          angleY 175.963
+         }
+         arsenal_usmc2 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{3970981B94D3F882}Prefabs/Systems/Arsenal/ArsenalBoxes/US/ArsenalBox_USMC.et"
+           }
+          }
+          coords 5.947 -0.824 -1.413
+          angleY 175.963
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ Area3 {
+  components {
+   SCR_MapDescriptorComponent "{62B881784B61E2D8}" {
+    DisplayName "Material sicherstellen"
+    ShowTerrainElevation 1
+    MapItemDescriptor 1
+    MainType Task
+    UnitType Infantry
+    Scale 10
+    Faction 1
+    ForceGroupType Separate
+    ForceGroupScale 10
+    Priority 10
+   }
+   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+    m_iRandomPercent 100
+    m_bShowDebugShapesDuringRuntime 1
+    m_fAreaRadius 199
+    m_bOnce 0
+    m_bDynamicDespawn 1
+    m_iDynamicDespawnRange 200
+    m_bShowDebugShapesInWorkbench 1
+   }
+  }
+  coords 3122.126 121.022 5219.012
+  angleY -39.309
+  {
+   SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
+    coords 0.402 -0.45 0.762
+    angleY 39.309
+    m_sName "Supplies"
+    m_sDescription ""
+   }
+   GenericEntity LayerTaskClearArea3 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
+    components {
+     SCR_ScenarioFrameworkLayerTaskClearArea "{5A6513F46D132331}" {
+      m_sFactionKey "BW"
+      m_sTaskTitle "Material sichern"
+      m_sTaskDescription "Material sichern"
+      m_bPlaceMarkerOnSubjectSlot 1
+      m_sOverrideObjectDisplayName "Material sichern"
+     }
+    }
+    coords -2.288 -0.45 -2.523
+    {
+     $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+      Layer3 {
+       components {
+        SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+         m_iRandomPercent 100
+        }
+       }
+       coords -1.727 -0.049 -6.085
+       {
+        GenericEntity SlotClearArea3 : "{E53456990A756229}Prefabs/ScenarioFramework/Components/SlotClearArea.et" {
+         components {
+          SCR_ScenarioFrameworkSlotClearArea "{5A633AF525D5B972}" {
+           m_aPlugins {
+            SCR_ScenarioFrameworkPluginTrigger "{5A633AF5368D26A3}" {
+             m_fAreaRadius 75
+             m_aSpecificClassNames {
+              "SCR_ChimeraCharacter"
+             }
+             m_sActivatedByThisFaction "US"
+            }
+           }
+          }
+         }
+         coords 2.088 0.053 5.775
+        }
+       }
+      }
+      Layer_AI3 {
+       coords 6.884 0.002 6.654
+       angleY -30.194
+       {
+        $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+         group_4 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+           }
+          }
+          coords -43.117 -0.952 0.937
+         }
+         group_5 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+           }
+          }
+          coords 6.45 -0.414 -58.746
+         }
+         group_6 {
+          components {
+           AISmartActionComponent "{62B8817ECBBC5CC6}" {
+            AIBehaviorTree "{6A15DD6945D1FCC0}AI/BehaviorTrees/Chimera/Group/GetInNearestVehicle.bt"
+           }
+           AISmartActionUserComponent "{62B8817D3270F9D2}" {
+           }
+           SCR_AISmartActionComponent "{62B8817CE235FA9D}" {
+            AIBehaviorTree "{6A15DD6945D1FCC0}AI/BehaviorTrees/Chimera/Group/GetInNearestVehicle.bt"
+           }
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+            m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{62B8817D07D8BDB6}" {
+            }
+           }
+          }
+          coords 49.625 -2.732 28.805
+         }
+         UAZ3 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{03D9932135924AEF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo_uncovered.et"
+           }
+          }
+          coords -0.815 -0.352 9.754
+         }
+         HMMWV3 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{B4FB836E882E1A05}Prefabs/Vehicles/Wheeled/M998/M998_USAF.et"
+           }
+          }
+          coords -1.118 -0.639 -6.104
+          angleY 175.963
+         }
+         arsenal_ru3 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{FB95D1B918E908A9}Prefabs/Systems/Arsenal/ArsenalBoxes/USSR/ArsenalBox_RHS.et"
+           }
+          }
+          coords 5.035 -0.824 11.511
+          angleY 175.963
+         }
+         arsenal_ion3 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{691477161637ECDB}Prefabs/Systems/Arsenal/ArsenalBoxes/ION/ArsenalBox_RHS_ION.et"
+           }
+          }
+          coords 5.444 -0.824 5.713
+          angleY 175.963
+         }
+         arsenal_bw3 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{6988423066D7593B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_BW.et"
+           }
+          }
+          coords 6.331 -0.824 -6.86
+          angleY 175.963
+         }
+         arsenal_usmc3 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{3970981B94D3F882}Prefabs/Systems/Arsenal/ArsenalBoxes/US/ArsenalBox_USMC.et"
+           }
+          }
+          coords 5.947 -0.824 -1.413
+          angleY 175.963
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ Area5 {
+  components {
+   SCR_MapDescriptorComponent "{62B881784B61E2D8}" {
+    DisplayName "Material sicherstellen"
+    ShowTerrainElevation 1
+    MapItemDescriptor 1
+    MainType Transmitter
+    Scale 10
+    ForceGroupType Separate
+    ForceGroupScale 10
+    Priority 10
+   }
+   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+    m_iRandomPercent 100
+    m_bShowDebugShapesDuringRuntime 1
+    m_fAreaRadius 199
+    m_bOnce 0
+    m_bDynamicDespawn 1
+    m_iDynamicDespawnRange 200
+    m_bShowDebugShapesInWorkbench 1
+   }
+  }
+  coords 6453.438 163.523 6504.44
+  angleY 104.077
+  {
+   SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
+    coords 2.299 -0.45 -1.373
+    angleY -104.077
+    m_sName "Supplies"
+    m_sDescription ""
+   }
+   GenericEntity LayerTaskClearArea4 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
+    components {
+     SCR_ScenarioFrameworkLayerTaskClearArea "{5A6513F46D132331}" {
+      m_sFactionKey "BW"
+      m_sTaskTitle "Material sichern"
+      m_sTaskDescription "Material sichern"
+      m_bPlaceMarkerOnSubjectSlot 1
+      m_sOverrideObjectDisplayName "Material sichern"
+     }
+    }
+    coords -2.288 -0.45 -2.523
+    {
+     $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+      Layer4 {
+       components {
+        SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+         m_iRandomPercent 100
+        }
+       }
+       coords -1.727 -0.049 -6.085
+       {
+        GenericEntity SlotClearArea4 : "{E53456990A756229}Prefabs/ScenarioFramework/Components/SlotClearArea.et" {
+         components {
+          SCR_ScenarioFrameworkSlotClearArea "{5A633AF525D5B972}" {
+           m_aPlugins {
+            SCR_ScenarioFrameworkPluginTrigger "{5A633AF5368D26A3}" {
+             m_fAreaRadius 75
+             m_aSpecificClassNames {
+              "SCR_ChimeraCharacter"
+             }
+             m_sActivatedByThisFaction "US"
+            }
+           }
+          }
+         }
+         coords 2.088 0.053 5.775
+        }
+       }
+      }
+      Layer_AI4 {
+       coords 6.884 0.002 6.654
+       angleY -30.194
+       {
+        $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+         group_7 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+           }
+          }
+          coords -43.117 -0.952 0.937
+         }
+         group_8 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+           }
+          }
+          coords 6.45 -0.414 -58.746
+         }
+         group_9 {
+          components {
+           AISmartActionComponent "{62B8817ECBBC5CC6}" {
+            AIBehaviorTree "{6A15DD6945D1FCC0}AI/BehaviorTrees/Chimera/Group/GetInNearestVehicle.bt"
+           }
+           AISmartActionUserComponent "{62B8817D3270F9D2}" {
+           }
+           SCR_AISmartActionComponent "{62B8817CE235FA9D}" {
+            AIBehaviorTree "{6A15DD6945D1FCC0}AI/BehaviorTrees/Chimera/Group/GetInNearestVehicle.bt"
+           }
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+            m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{62B8817D07D8BDB6}" {
+            }
+           }
+          }
+          coords 49.625 -2.732 28.805
+         }
+         UAZ4 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{03D9932135924AEF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo_uncovered.et"
+           }
+          }
+          coords -0.815 -0.352 9.754
+         }
+         HMMWV4 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{B4FB836E882E1A05}Prefabs/Vehicles/Wheeled/M998/M998_USAF.et"
+           }
+          }
+          coords -1.118 -0.639 -6.104
+          angleY 175.963
+         }
+         arsenal_ru4 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{FB95D1B918E908A9}Prefabs/Systems/Arsenal/ArsenalBoxes/USSR/ArsenalBox_RHS.et"
+           }
+          }
+          coords 5.035 -0.824 11.511
+          angleY 175.963
+         }
+         arsenal_ion4 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{691477161637ECDB}Prefabs/Systems/Arsenal/ArsenalBoxes/ION/ArsenalBox_RHS_ION.et"
+           }
+          }
+          coords 5.444 -0.824 5.713
+          angleY 175.963
+         }
+         arsenal_bw4 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{6988423066D7593B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_BW.et"
+           }
+          }
+          coords 6.331 -0.824 -6.86
+          angleY 175.963
+         }
+         arsenal_usmc4 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{3970981B94D3F882}Prefabs/Systems/Arsenal/ArsenalBoxes/US/ArsenalBox_USMC.et"
+           }
+          }
+          coords 5.947 -0.824 -1.413
+          angleY 175.963
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ Area6 {
+  components {
+   SCR_MapDescriptorComponent "{62B881784B61E2D8}" {
+    DisplayName "Material sicherstellen"
+    ShowTerrainElevation 1
+    MapItemDescriptor 1
+    MainType Task
+    UnitType Infantry
+    Scale 10
+    Faction 1
+    ForceGroupType Separate
+    ForceGroupScale 10
+    Priority 10
+   }
+   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+    m_iRandomPercent 100
+    m_bShowDebugShapesDuringRuntime 1
+    m_fAreaRadius 199
+    m_bOnce 0
+    m_bDynamicDespawn 1
+    m_iDynamicDespawnRange 200
+    m_bShowDebugShapesInWorkbench 1
+   }
+  }
+  coords 8771.896 197.943 3896.31
+  angleY 40.622
+  {
+   SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
+    coords 0.104 -0.45 -0.472
+    angleY -40.622
+    m_sName "Supplies"
+    m_sDescription ""
+   }
+   GenericEntity LayerTaskClearArea5 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
+    components {
+     SCR_ScenarioFrameworkLayerTaskClearArea "{5A6513F46D132331}" {
+      m_sFactionKey "BW"
+      m_sTaskTitle "Material sichern"
+      m_sTaskDescription "Material sichern"
+      m_bPlaceMarkerOnSubjectSlot 1
+      m_sOverrideObjectDisplayName "Material sichern"
+     }
+    }
+    coords -2.288 -0.45 -2.523
+    {
+     $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+      Layer5 {
+       components {
+        SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+         m_iRandomPercent 100
+        }
+       }
+       coords -1.727 -0.049 -6.085
+       {
+        GenericEntity SlotClearArea5 : "{E53456990A756229}Prefabs/ScenarioFramework/Components/SlotClearArea.et" {
+         components {
+          SCR_ScenarioFrameworkSlotClearArea "{5A633AF525D5B972}" {
+           m_aPlugins {
+            SCR_ScenarioFrameworkPluginTrigger "{5A633AF5368D26A3}" {
+             m_fAreaRadius 75
+             m_aSpecificClassNames {
+              "SCR_ChimeraCharacter"
+             }
+             m_sActivatedByThisFaction "US"
+            }
+           }
+          }
+         }
+         coords 2.088 0.053 5.775
+        }
+       }
+      }
+      Layer_AI5 {
+       coords 6.884 0.002 6.654
+       angleY -30.194
+       {
+        $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+         group_10 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+           }
+          }
+          coords -43.117 -0.952 0.937
+         }
+         group_11 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+           }
+          }
+          coords 6.45 -0.414 -58.746
+         }
+         group_12 {
+          components {
+           AISmartActionComponent "{62B8817ECBBC5CC6}" {
+            AIBehaviorTree "{6A15DD6945D1FCC0}AI/BehaviorTrees/Chimera/Group/GetInNearestVehicle.bt"
+           }
+           AISmartActionUserComponent "{62B8817D3270F9D2}" {
+           }
+           SCR_AISmartActionComponent "{62B8817CE235FA9D}" {
+            AIBehaviorTree "{6A15DD6945D1FCC0}AI/BehaviorTrees/Chimera/Group/GetInNearestVehicle.bt"
+           }
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{0A8A59C10F0B2D8B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Team_AT.et"
+            m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{62B8817D07D8BDB6}" {
+            }
+           }
+          }
+          coords 49.625 -2.732 28.805
+         }
+         UAZ5 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{03D9932135924AEF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo_uncovered.et"
+           }
+          }
+          coords -0.815 -0.352 9.754
+         }
+         HMMWV5 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{B4FB836E882E1A05}Prefabs/Vehicles/Wheeled/M998/M998_USAF.et"
+           }
+          }
+          coords -1.118 -0.639 -6.104
+          angleY 175.963
+         }
+         arsenal_ru5 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{FB95D1B918E908A9}Prefabs/Systems/Arsenal/ArsenalBoxes/USSR/ArsenalBox_RHS.et"
+           }
+          }
+          coords 5.035 -0.824 11.511
+          angleY 175.963
+         }
+         arsenal_ion5 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{691477161637ECDB}Prefabs/Systems/Arsenal/ArsenalBoxes/ION/ArsenalBox_RHS_ION.et"
+           }
+          }
+          coords 5.444 -0.824 5.713
+          angleY 175.963
+         }
+         arsenal_bw5 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{6988423066D7593B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_BW.et"
+           }
+          }
+          coords 6.331 -0.824 -6.86
+          angleY 175.963
+         }
+         arsenal_usmc5 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{3970981B94D3F882}Prefabs/Systems/Arsenal/ArsenalBoxes/US/ArsenalBox_USMC.et"
+           }
+          }
+          coords 5.947 -0.824 -1.413
+          angleY 175.963
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

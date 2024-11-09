@@ -121,20 +121,12 @@ GenericEntity TestItems : "{622F9989DDC4865B}PrefabLibrary/Props/Civilian/Recrea
  }
 }
 $grp Vehicle : "{FA6820A9A52CD05B}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MDO_USAF.et" {
- M1025_armed_M2HB_MDO_USAF1 {
-  coords 7663.652 12.888 8070.891
-  angleY -140.376
- }
- M1025_armed_M2HB_MDO_USAF3 {
-  coords 7673.341 12.93 8082.055
-  angleY -140.376
- }
  M1025_armed_M2HB_MDO_USAF2 {
   coords 7668.135 12.889 8076.229
   angleY -140.376
  }
  M1025_armed_M2HB_MDO_USAF4 {
-  coords 7678.881 12.912 8087.853
+  coords 7673.776 12.912 8082.306
   angleY -140.376
  }
 }

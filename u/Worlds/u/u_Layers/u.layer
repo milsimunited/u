@@ -23,7 +23,7 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  components {
   EPF_BasicRespawnSystemComponent "{627040E873D4B278}" {
    m_fDeployMenuOpenDelay 15
-   m_rDefaultPrefab "{38BC774AC082A10E}Prefabs/Characters/Factions/BLUFOR/Bundeswehr/Flecktarn/Character_BW_Rifleman_Flecktarn_2.et"
+   m_rDefaultPrefab "{4DB5AA476E0BBB94}Prefabs/Characters/Factions/BLUFOR/Bundeswehr/Flecktarn/u.et"
   }
   EPF_PersistenceManagerComponent "{627040E80C2D69A3}" {
    m_pConnectionInfo EDF_JsonFileDbConnectionInfo "{627040E8B941C7FE}" {
@@ -32,6 +32,9 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
   }
   SCR_EditorRespawnBriefingComponent "{570245454BF91285}" {
    Enabled 0
+  }
+  SCR_GameModeSFManager "{62B88140EE3DA56C}" {
+   m_bDynamicDespawn 1
   }
   SCR_PlayerSpawnPointManagerComponent "{56C2DDA69EF94C6D}" {
    Enabled 0
@@ -68,16 +71,16 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "	"\
  "	void u_loop()"\
  "    {"\
- "		PlayerManager playerManager = GetGame().GetPlayerManager();"\
- "		array<int> allPlayers = {};"\
+ "		protected PlayerManager playerManager = GetGame().GetPlayerManager();"\
+ "		protected array<int> allPlayers = {};"\
  "		playerManager.GetPlayers(allPlayers);"\
- "		"\
- "		Resource resource_blufor = Resource.Load(\"{938AAB9744DC2546}Prefabs/Groups/BLUFOR/Group_BW_Squad_Flecktarn.et\");"\
- "		Resource resource_blufor_02 = Resource.Load(\"{DA70F249A8B7A366}Prefabs/Groups/BLUFOR/RHS_USAF/RHS_USAF_MARSOC/Group_USAF_USMC_MARSOC_RifleSquad.et\");"\
- "		Resource resource_opfor = Resource.Load(\"{F6CEAA1D2B0A7ED0}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_RifleSquad.et\");"\
- "		Resource resource_opfor_02 = Resource.Load(\"{F6CEAA1D2B0A7ED0}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_RifleSquad.et\");"\
- "		EntitySpawnParams params = new EntitySpawnParams();"\
+ "		protected EntitySpawnParams params = new EntitySpawnParams();"\
  "		params.TransformMode = ETransformMode.WORLD;"\
+ "		"\
+ "		protected Resource resource_blufor = Resource.Load(\"{938AAB9744DC2546}Prefabs/Groups/BLUFOR/Group_BW_Squad_Flecktarn.et\");"\
+ "		protected Resource resource_blufor_02 = Resource.Load(\"{DA70F249A8B7A366}Prefabs/Groups/BLUFOR/RHS_USAF/RHS_USAF_MARSOC/Group_USAF_USMC_MARSOC_RifleSquad.et\");"\
+ "		protected Resource resource_opfor = Resource.Load(\"{0ACD74AD27EEEE7D}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_FireGroup.et\");"\
+ "		protected Resource resource_opfor_02 = Resource.Load(\"{0ACD74AD27EEEE7D}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_FireGroup.et\");"\
  "		"\
  "		Print(\"u loop ext execute\", LogLevel.NORMAL);"\
  "		"\
@@ -88,7 +91,7 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "			bool too_far = true;"\
  "			foreach (int oneplayerid : allPlayers)"\
  "			{"\
- "				IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);"\
+ "				protected IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);"\
  "				if ( spawned_blufor[i] != NULL )"\
  "				{"\
  "					if ( vector.Distance(spawned_blufor[i].GetOrigin(), player.GetOrigin()) < 350 )"\
@@ -123,7 +126,7 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "			bool too_far = true;				"\
  "			foreach (int oneplayerid : allPlayers)"\
  "			{"\
- "				IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);"\
+ "				protected IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);"\
  "				if ( spawned_opfor[i] != NULL )"\
  "				{"\
  "					if ( vector.Distance(spawned_opfor[i].GetOrigin(), player.GetOrigin()) < 350 )"\
@@ -154,43 +157,69 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "			"\
  "		foreach (int oneplayerid : allPlayers)"\
  "		{"\
- "			IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);"\
- "			vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(175, 350, player.GetOrigin(), true);"\
+ "			protected IEntity player = playerManager.GetPlayerControlledEntity(oneplayerid);"\
+ "			protected vector spawn_pos = SCR_Math2D.GenerateRandomPointInRadius(175, 350, player.GetOrigin(), true);"\
  "			bool too_close = false;"\
  "			foreach (int oneplayerid2 : allPlayers)"\
  "			{"\
- "				IEntity player2 = playerManager.GetPlayerControlledEntity(oneplayerid2);"\
+ "				protected IEntity player2 = playerManager.GetPlayerControlledEntity(oneplayerid2);"\
  "				if ( vector.Distance(player2.GetOrigin(), spawn_pos) < 150 )"\
  "				{"\
  "					too_close = true;"\
  "				}"\
  "			}"\
+ "			"\
+ "			if ( vector.Distance(GetGame().GetWorld().FindEntityByName(\"u_base\").GetOrigin(), spawn_pos) < 500 )"\
+ "			{"\
+ "				too_close = true;"\
+ "			}"\
+ "			"\
  "			if ( !too_close )"\
  "			{"\
- "				params.Transform = {\"1 0 0\",\"0 1 0\",\"0 0 1\",spawn_pos};"\
- "				int random = Math.RandomInt(0, 2);"\
+ "				//params.Transform = {\"1 0 0\",\"0 1 0\",\"0 0 1\",spawn_pos};"\
+ "				params.Transform[3] = spawn_pos;"\
+ "				protected int random = Math.RandomInt(0, 2);"\
+ "				"\
+ "				// SCR_DebugEditorComponent.c"\
+ "				// ResourceName wp_prefab = \"{FFF9518F73279473}PrefabsEditable/Auto/AI/Waypoints/E_AIWaypoint_Move.et\";"\
+ "				ResourceName wp_prefab = \"{D9C14ECEC9772CC6}PrefabsEditable/Auto/AI/Waypoints/E_AIWaypoint_Defend.et\";"\
+ "				EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "				spawnParams.Transform[3] = spawn_pos; // player.GetOrigin()"\
+ "				AIWaypoint wp =  AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load(wp_prefab), GetGame().GetWorld(), spawnParams));"\
  "				"\
  "				if(spawned_blufor.Count() < 18)"\
  "				{"\
- "					IEntity blufor = GetGame().SpawnEntityPrefab(resource_blufor, GetGame().GetWorld(), params);"\
+ "					protected IEntity blufor = GetGame().SpawnEntityPrefab(resource_blufor, GetGame().GetWorld(), params);"\
  "					spawned_blufor.Insert(blufor);"\
+ "					"\
+ "					protected AIGroup group_blufor = AIGroup.Cast(blufor);"\
+ "					group_blufor.AddWaypoint(wp);"\
  "					"\
  "					if(random == 0)"\
  "					{"\
- "						IEntity blufor_02 = GetGame().SpawnEntityPrefab(resource_blufor_02, GetGame().GetWorld(), params);"\
+ "						protected IEntity blufor_02 = GetGame().SpawnEntityPrefab(resource_blufor_02, GetGame().GetWorld(), params);"\
  "						spawned_blufor.Insert(blufor_02);"\
+ "						"\
+ "						protected AIGroup group_blufor_02 = AIGroup.Cast(blufor_02);"\
+ "						group_blufor_02.AddWaypoint(wp);"\
  "					}"\
  "				}"\
  "				"\
  "				if(spawned_opfor.Count() < 20)"\
  "				{"\
- "					IEntity opfor = GetGame().SpawnEntityPrefab(resource_opfor, GetGame().GetWorld(), params);"\
+ "					protected IEntity opfor = GetGame().SpawnEntityPrefab(resource_opfor, GetGame().GetWorld(), params);"\
  "					spawned_opfor.Insert(opfor);"\
+ "					"\
+ "					protected AIGroup group_opfor = AIGroup.Cast(opfor);"\
+ "					group_opfor.AddWaypoint(wp);"\
  "					"\
  "					if(random == 1)"\
  "					{"\
- "						IEntity opfor_02 = GetGame().SpawnEntityPrefab(resource_opfor_02, GetGame().GetWorld(), params);"\
+ "						protected IEntity opfor_02 = GetGame().SpawnEntityPrefab(resource_opfor_02, GetGame().GetWorld(), params);"\
  "						spawned_opfor.Insert(opfor_02);"\
+ "					"\
+ "						protected AIGroup group_opfor_02 = AIGroup.Cast(opfor);"\
+ "						group_opfor_02.AddWaypoint(wp);"\
  "					}"\
  "					//Print(\"random: \" + random, LogLevel.NORMAL);"\
  "				}"\
@@ -202,7 +231,7 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
  "    }"
  OnGameStart ""\
  "		Print(\"u loop ext initialized\", LogLevel.NORMAL);"\
- "		GetGame().GetCallqueue().CallLater(this.u_loop, 10000, true);"\
+ "		GetGame().GetCallqueue().CallLater(this.u_loop, 240000, true);"\
  "	"
  m_bAutoInitEditor 0
  m_GameMasterTarget NOBODY
@@ -218,42 +247,66 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
     }
    }
   }
+  SCR_BaseTaskManager {
+   ID "56E685E92F1B7FAB"
+  }
  }
 }
-$grp EPF_SpawnPoint {
- Spawnpoint {
-  coords 8695.542 214.238 4042.763
-  angleY 105.975
-  m_fSpawnRadius 1500
+EPF_SpawnPoint Spawnpoint {
+ coords 8695.542 214.238 4042.763
+ angleY 105.975
+ m_fSpawnRadius 1500
+ {
+  $grp EPF_SpawnPoint {
+   Spawnpoint2 {
+    coords 912.109 -98.179 -5375.166
+    m_fSpawnRadius 1500
+   }
+   Spawnpoint5 {
+    coords -3061.87 -116.489 -4739.959
+    m_fSpawnRadius 1500
+   }
+   Spawnpoint3 {
+    coords 93.22 -92.403 -6545.528
+    m_fSpawnRadius 1500
+   }
+   Spawnpoint4 {
+    coords -645.383 -87.223 -1522.688
+    m_fSpawnRadius 1500
+   }
+   Spawnpoint6 {
+    coords -261.269 -97.431 -2900.29
+    m_fSpawnRadius 1500
+   }
+  }
  }
- Spawnpoint2 {
-  coords 3276.927 116.059 4645.221
-  angleY 105.975
-  m_fSpawnRadius 1500
- }
- Spawnpoint5 {
-  coords 4981.313 97.749 8290.911
-  angleY 105.975
-  m_fSpawnRadius 1500
- }
- Spawnpoint3 {
-  coords 2377.135 121.835 5754.591
-  angleY 105.975
-  m_fSpawnRadius 1500
- }
- Spawnpoint4 {
-  coords 7409.279 127.015 5082.294
-  angleY 105.975
-  m_fSpawnRadius 1500
- }
- Spawnpoint6 {
-  coords 5979.162 116.807 5092.155
-  angleY 105.975
-  m_fSpawnRadius 1500
- }
+}
+GenericEntity u_base {
+ coords 7419.204 163.502 4300.103
 }
 SCR_MapLocator {
  coords 7709.006 13.524 8101.632
+ Flags 2097155
  m_WorldDirections SCR_MapLocationQuadHint "{5AAA92CD91D1D8F5}" : "{ABA21F381437DFE8}Configs/Map/MapLocatorHints/LocationHintsEveron.conf" {
  }
+}
+GenericEntity arsenal_usmc_base : "{3970981B94D3F882}Prefabs/Systems/Arsenal/ArsenalBoxes/US/ArsenalBox_USMC.et" {
+ coords 7395.428 162.323 4319.098
+ angleY 32.112
+}
+Vehicle M923A1_transport_covered_closed1 : "{48A6D4372444B85A}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_closed.et" {
+ coords 7422.381 162.99 4320.123
+ angleY 24.885
+}
+GenericEntity arsenal_ion_base : "{691477161637ECDB}Prefabs/Systems/Arsenal/ArsenalBoxes/ION/ArsenalBox_RHS_ION.et" {
+ coords 7397.667 162.323 4319.94
+ angleY -66.606
+}
+GenericEntity arsenal_bw_base : "{6988423066D7593B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_BW.et" {
+ coords 7397.504 162.323 4316.734
+ angleY 26.293
+}
+GenericEntity arsenal_ru_base : "{FB95D1B918E908A9}Prefabs/Systems/Arsenal/ArsenalBoxes/USSR/ArsenalBox_RHS.et" {
+ coords 7397.112 162.323 4322.54
+ angleY 32.112
 }
