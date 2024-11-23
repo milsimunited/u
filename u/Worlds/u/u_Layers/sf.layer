@@ -27,7 +27,7 @@ $grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Are
   {
    SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
     coords -2.154 -0.45 -0.505
-    m_sName "Supplies"
+    m_sName "Enemies"
     m_sDescription ""
    }
    GenericEntity LayerTaskClearArea_1 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
@@ -196,7 +196,7 @@ $grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Are
   {
    SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
     coords 0.349 -0.45 -2.523
-    m_sName "Supplies"
+    m_sName "Enemies"
     m_sDescription ""
    }
    GenericEntity LayerTaskClearArea1 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
@@ -368,7 +368,7 @@ $grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Are
    SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
     coords 0.402 -0.45 0.762
     angleY 39.309
-    m_sName "Supplies"
+    m_sName "Enemies"
     m_sDescription ""
    }
    GenericEntity LayerTaskClearArea3 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
@@ -538,7 +538,7 @@ $grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Are
    SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
     coords 2.299 -0.45 -1.373
     angleY -104.077
-    m_sName "Supplies"
+    m_sName "Enemies"
     m_sDescription ""
    }
    GenericEntity LayerTaskClearArea4 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
@@ -710,7 +710,7 @@ $grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Are
    SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
     coords 0.104 -0.45 -0.472
     angleY -40.622
-    m_sName "Supplies"
+    m_sName "Enemies"
     m_sDescription ""
    }
    GenericEntity LayerTaskClearArea5 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
@@ -843,6 +843,110 @@ $grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Are
           }
           coords 5.947 -0.824 -1.413
           angleY 175.963
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ base_vehicles {
+  components {
+   SCR_MapDescriptorComponent "{62B881784B61E2D8}" {
+    DisplayName "Base"
+    ShowTerrainElevation 1
+    MapItemDescriptor 1
+    MainType Task
+    UnitType Infantry
+    Scale 10
+    Faction 1
+    ForceGroupType Separate
+    ForceGroupScale 10
+    Priority 10
+   }
+   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+    m_iRandomPercent 100
+    m_bShowDebugShapesDuringRuntime 1
+    m_fAreaRadius 199
+    m_bOnce 0
+    m_bDynamicDespawn 1
+    m_iDynamicDespawnRange 200
+    m_bShowDebugShapesInWorkbench 1
+   }
+  }
+  coords 7425.727 164.08 4320.077
+  angleY 23.006
+  {
+   SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
+    coords -2.154 -0.45 -0.505
+    m_sName "Base"
+    m_sDescription ""
+    m_sMapIconName "Icon_Task_Defend"
+    m_sTaskListIconName "Icon_Task_Defend"
+   }
+   GenericEntity LayerTaskClearArea2 : "{CDC0845AD90BA073}Prefabs/ScenarioFramework/Components/LayerTaskClearArea.et" {
+    components {
+     SCR_ScenarioFrameworkLayerTaskClearArea "{5A6513F46D132331}" {
+      m_sFactionKey "BW"
+      m_sTaskTitle "Base"
+      m_sTaskDescription "Base"
+      m_sTaskPrefab "{888DC29A0B4F3F20}Prefabs/ScenarioFramework/Tasks/TaskDefend.et"
+      m_bPlaceMarkerOnSubjectSlot 1
+      m_sOverrideObjectDisplayName "Base"
+     }
+    }
+    coords -2.154 -0.45 -3.246
+    {
+     $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+      Layer6 {
+       components {
+        SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+         m_iRandomPercent 100
+        }
+       }
+       coords -1.727 -0.049 -6.085
+       {
+        GenericEntity SlotClearArea6 : "{E53456990A756229}Prefabs/ScenarioFramework/Components/SlotClearArea.et" {
+         components {
+          SCR_ScenarioFrameworkSlotClearArea "{5A633AF525D5B972}" {
+           m_aPlugins {
+            SCR_ScenarioFrameworkPluginTrigger "{5A633AF5368D26A3}" {
+             m_fAreaRadius 75
+             m_aSpecificClassNames {
+              "SCR_ChimeraCharacter"
+             }
+             m_sActivatedByThisFaction "US"
+            }
+           }
+          }
+         }
+         coords 2.088 0.053 5.775
+        }
+       }
+      }
+      Layer_AI6 {
+       coords 0.218 0.002 -0.11
+       {
+        $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+         base_vehicle_01 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{B4FB836E882E1A05}Prefabs/Vehicles/Wheeled/M998/M998_USAF.et"
+           }
+          }
+          coords -1.869 -0.639 -6.092
+          angleY -178.967
+         }
+         base_vehicle_02 {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sObjectToSpawn "{B4FB836E882E1A05}Prefabs/Vehicles/Wheeled/M998/M998_USAF.et"
+           }
+          }
+          coords -1.618 -0.639 4.301
+          angleY -178.363
          }
         }
        }

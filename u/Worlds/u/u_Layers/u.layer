@@ -20,9 +20,14 @@ PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/Perc
  coords 7707.832 13.524 8099.771
 }
 TimeAndWeatherManagerEntity TimeAndWeatherManager : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
+ components {
+  EPF_PersistenceComponent "{5A2F39DFADA7F441}" {
+   m_bUseChangeTracker 1
+  }
+ }
  coords 7869.507 0 4345.013
  "Automatic Time Advancement" 0
- "Initial Day Time" 8.257
+ "Initial Day Time" 8.71
  Year 2024
  "Month of the Year" 11
  "Day of the Month" 22
@@ -267,29 +272,34 @@ SCR_GameModeEditor GameMode : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Editor/GameMod
  }
 }
 EPF_SpawnPoint Spawnpoint {
- coords 8695.542 214.238 4042.763
- angleY 105.975
+ coords 7402.156 162.779 4328.218
+ angleY -155.607
  m_fSpawnRadius 1500
  {
   $grp EPF_SpawnPoint {
    Spawnpoint2 {
     coords 912.109 -98.179 -5375.166
+    Flags 2097155
     m_fSpawnRadius 1500
    }
    Spawnpoint5 {
     coords -3061.87 -116.489 -4739.959
+    Flags 2097155
     m_fSpawnRadius 1500
    }
    Spawnpoint3 {
     coords 93.22 -92.403 -6545.528
+    Flags 2097155
     m_fSpawnRadius 1500
    }
    Spawnpoint4 {
     coords -645.383 -87.223 -1522.688
+    Flags 2097155
     m_fSpawnRadius 1500
    }
    Spawnpoint6 {
     coords -261.269 -97.431 -2900.29
+    Flags 2097155
     m_fSpawnRadius 1500
    }
   }
@@ -307,14 +317,42 @@ SCR_MapLocator {
 GenericEntity arsenal_usmc_base : "{3970981B94D3F882}Prefabs/Systems/Arsenal/ArsenalBoxes/US/ArsenalBox_USMC.et" {
  coords 7395.428 162.323 4319.098
  angleY 32.112
+ {
+  GenericEntity {
+   ID "58C4A255C2BC30BA"
+   Flags 2097155
+  }
+  GenericEntity {
+   ID "58C4A255C2BC30AA"
+   Flags 2097155
+  }
+  GenericEntity {
+   ID "58C4A255C2BC30DB"
+   Flags 2097155
+  }
+ }
 }
 Vehicle M923A1_transport_covered_closed1 : "{48A6D4372444B85A}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_closed.et" {
- coords 7422.381 162.99 4320.123
- angleY 24.885
+ coords 7437.887 162.99 4354.769
+ angleY -157.528
 }
 GenericEntity arsenal_ion_base : "{691477161637ECDB}Prefabs/Systems/Arsenal/ArsenalBoxes/ION/ArsenalBox_RHS_ION.et" {
  coords 7397.667 162.323 4319.94
  angleY -66.606
+ {
+  GenericEntity {
+   ID "62492BAA91E81CCA"
+   Flags 2097155
+  }
+  GenericEntity {
+   ID "62492BAA91E81CCD"
+   Flags 2097155
+  }
+  GenericEntity {
+   ID "62492BAA91E85A36"
+   Flags 2097155
+  }
+ }
 }
 GenericEntity arsenal_bw_base : "{6988423066D7593B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_BW.et" {
  coords 7397.504 162.323 4316.734
@@ -323,4 +361,18 @@ GenericEntity arsenal_bw_base : "{6988423066D7593B}PrefabsEditable/Auto/Props/Mi
 GenericEntity arsenal_ru_base : "{FB95D1B918E908A9}Prefabs/Systems/Arsenal/ArsenalBoxes/USSR/ArsenalBox_RHS.et" {
  coords 7397.112 162.323 4322.54
  angleY 32.112
+ {
+  GenericEntity {
+   ID "5977478D9C7F373E"
+   Flags 2097155
+  }
+  GenericEntity {
+   ID "5977478D9C709731"
+   Flags 2097155
+  }
+  GenericEntity {
+   ID "5977478D9C7048FE"
+   Flags 2097155
+  }
+ }
 }
