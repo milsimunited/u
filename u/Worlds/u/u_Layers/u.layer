@@ -19,7 +19,18 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 7707.832 13.524 8099.771
 }
-SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Editor/GameMode_Editor_Full.et" {
+TimeAndWeatherManagerEntity TimeAndWeatherManager : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
+ coords 7869.507 0 4345.013
+ "Automatic Time Advancement" 0
+ "Initial Day Time" 8.257
+ Year 2024
+ "Month of the Year" 11
+ "Day of the Month" 22
+ "Internal variant transition" 0
+ "Internal subvariant 0" 0
+ "Internal subvariant 1" 0
+}
+SCR_GameModeEditor GameMode : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Editor/GameMode_Editor_Full.et" {
  components {
   EPF_BasicRespawnSystemComponent "{627040E873D4B278}" {
    m_fDeployMenuOpenDelay 15
@@ -35,6 +46,9 @@ SCR_GameModeEditor GameMode_Editor_Full : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Ed
   }
   SCR_GameModeSFManager "{62B88140EE3DA56C}" {
    m_bDynamicDespawn 1
+  }
+  SCR_InitWeatherComponent "{58DCAB6D83A0CB17}" {
+   m_sInitialStartingWeatherId "Sunny"
   }
   SCR_PlayerSpawnPointManagerComponent "{56C2DDA69EF94C6D}" {
    Enabled 0
