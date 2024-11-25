@@ -869,14 +869,14 @@ $grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Are
    SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
     m_iRandomPercent 100
     m_bShowDebugShapesDuringRuntime 1
-    m_fAreaRadius 199
+    m_fAreaRadius 15
     m_bOnce 0
     m_bDynamicDespawn 1
-    m_iDynamicDespawnRange 200
+    m_iDynamicDespawnRange 20
     m_bShowDebugShapesInWorkbench 1
    }
   }
-  coords 7425.727 164.08 4320.077
+  coords 7427.252 164.08 4308.771
   angleY 23.006
   {
    SCR_ScenarioFrameworkTaskClearArea : "{A5E8E68E46D3E064}Prefabs/ScenarioFramework/Tasks/TaskClearArea.et" {
@@ -936,7 +936,7 @@ $grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Are
             m_sObjectToSpawn "{B4FB836E882E1A05}Prefabs/Vehicles/Wheeled/M998/M998_USAF.et"
            }
           }
-          coords -1.869 -0.639 -6.092
+          coords -7.388 -0.639 -1.756
           angleY -178.967
          }
          base_vehicle_02 {
@@ -945,7 +945,7 @@ $grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Are
             m_sObjectToSpawn "{B4FB836E882E1A05}Prefabs/Vehicles/Wheeled/M998/M998_USAF.et"
            }
           }
-          coords -1.618 -0.639 4.301
+          coords -7.17 -0.639 6.808
           angleY -178.363
          }
         }

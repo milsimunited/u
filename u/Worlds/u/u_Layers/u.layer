@@ -19,22 +19,6 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 7707.832 13.524 8099.771
 }
-TimeAndWeatherManagerEntity TimeAndWeatherManager : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
- components {
-  EPF_PersistenceComponent "{5A2F39DFADA7F441}" {
-   m_bUseChangeTracker 1
-  }
- }
- coords 7869.507 0 4345.013
- "Automatic Time Advancement" 0
- "Initial Day Time" 8.71
- Year 2024
- "Month of the Year" 11
- "Day of the Month" 22
- "Internal variant transition" 0
- "Internal subvariant 0" 0
- "Internal subvariant 1" 0
-}
 SCR_GameModeEditor GameMode : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Editor/GameMode_Editor_Full.et" {
  components {
   EPF_BasicRespawnSystemComponent "{627040E873D4B278}" {
@@ -42,6 +26,7 @@ SCR_GameModeEditor GameMode : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Editor/GameMod
    m_rDefaultPrefab "{4DB5AA476E0BBB94}Prefabs/Characters/Factions/BLUFOR/Bundeswehr/Flecktarn/u.et"
   }
   EPF_PersistenceManagerComponent "{627040E80C2D69A3}" {
+   m_fAutosaveInterval 300
    m_pConnectionInfo EDF_JsonFileDbConnectionInfo "{627040E8B941C7FE}" {
     m_sDatabaseName "u"
    }
@@ -53,7 +38,7 @@ SCR_GameModeEditor GameMode : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Editor/GameMod
    m_bDynamicDespawn 1
   }
   SCR_InitWeatherComponent "{58DCAB6D83A0CB17}" {
-   m_sInitialStartingWeatherId "Sunny"
+   m_sInitialStartingWeatherId "Clear"
   }
   SCR_PlayerSpawnPointManagerComponent "{56C2DDA69EF94C6D}" {
    Enabled 0
@@ -74,6 +59,18 @@ SCR_GameModeEditor GameMode : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Editor/GameMod
   }
   SCR_RespawnTimerComponent "{56C2DDA6EE0E4071}" {
    Enabled 0
+  }
+  SCR_TimeAndWeatherHandlerComponent "{62F253A678869C6A}" {
+   m_iStartingHours 9
+   m_fDayTimeAcceleration 0.1
+   m_fNightTimeAcceleration 12
+   m_bUsePredefineStartingTimeAndWeatehr 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{62F253A640CD1D92}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 9
+    }
+   }
   }
   SCR_VotingManagerComponent "{5650BB6B6089393A}" {
    Enabled 0
